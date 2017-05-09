@@ -7,16 +7,20 @@ public class SolucionEjercicio1 {
 	private double minDistancia;
 	private int cantInstrucciones;
 
-	public SolucionEjercicio1(Punto a, Punto b) {
+	public SolucionEjercicio1(Punto a, Punto b, int cantInstrucciones) {
 		this.a = a;
 		this.b = b;
 		this.setMinDistancia(a.calcularDistancia(b));
-		this.cantInstrucciones = 0;
+		this.cantInstrucciones = cantInstrucciones;
 	}
 
-	public SolucionEjercicio1() {
+	public SolucionEjercicio1(Punto a, Punto b) {
+		this(a, b, 0);
+	}
+
+	public SolucionEjercicio1(int cantInstrucciones) {
 		this.setMinDistancia(Double.MAX_VALUE);
-		this.cantInstrucciones = 0;
+		this.cantInstrucciones = cantInstrucciones;
 	}
 	
 	public Punto getA() {

@@ -18,7 +18,7 @@ public class Ejercicio1 {
 	public SolucionEjercicio1 distanciaMinimaIterativa(List<Punto> points) {
 		
 		double dmin = Double.MAX_VALUE; this.cantInstrucciones++;
-		SolucionEjercicio1 puntosMenorDist = new SolucionEjercicio1(); this.cantInstrucciones++;
+		SolucionEjercicio1 puntosMenorDist = new SolucionEjercicio1(this.cantInstrucciones);
 			
 		for(int i = 0; i < points.size();i++){
 			for(int j = i+1; j < points.size();j++){
@@ -43,7 +43,12 @@ public class Ejercicio1 {
 
 	private SolucionEjercicio1 distanciaMinimaDCRecursivo(List<Punto> puntosOrdenados) {
 		if (puntosOrdenados.size() < 2) {
-			return new SolucionEjercicio1();
+			// solución sin puntos, y distancia mínima "infinita"
+			return new SolucionEjercicio1(this.cantInstrucciones);
+		}
+		else if (puntosOrdenados.size() == 2) {
+			// caso base
+			return new SolucionEjercicio1(puntosOrdenados.get(0), puntosOrdenados.get(1), this.cantInstrucciones);
 		}
 
 		List<Punto> puntosIzq = new ArrayList<Punto>(puntosOrdenados.subList(0, puntosOrdenados.size()/2)); this.cantInstrucciones++;
@@ -73,6 +78,7 @@ public class Ejercicio1 {
 		// https://en.wikipedia.org/wiki/Closest_pair_of_points_problem
 		for (int i = puntosIzq.size() - 1; i >= 0 && puntosIzq.get(i).getX() >= coordXDivision - minDistancia; i-- ) {
 			for (int j = 0; j < puntosDer.size() && puntosDer.get(i).getX() <= coordXDivision + minDistancia; j++ ) {
+				this.cantInstrucciones++;
 				if (puntosIzq.get(i).calcularDistancia(puntosDer.get(j)) < minDistancia) {
 					puntosMenor = new SolucionEjercicio1(puntosIzq.get(i), puntosDer.get(j));
 				}
