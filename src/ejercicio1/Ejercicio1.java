@@ -77,7 +77,7 @@ public class Ejercicio1 {
 		// "turns out this step can be accomplished in linear time" - probarlo
 		// https://en.wikipedia.org/wiki/Closest_pair_of_points_problem
 		for (int i = puntosIzq.size() - 1; i >= 0 && puntosIzq.get(i).getX() >= coordXDivision - minDistancia; i-- ) {
-			for (int j = 0; j < puntosDer.size() && puntosDer.get(i).getX() <= coordXDivision + minDistancia; j++ ) {
+			for (int j = 0; j < puntosDer.size() && puntosDer.get(j).getX() <= coordXDivision + minDistancia; j++ ) {
 				this.cantInstrucciones++;
 				if (puntosIzq.get(i).calcularDistancia(puntosDer.get(j)) < minDistancia) {
 					puntosMenor = new SolucionEjercicio1(puntosIzq.get(i), puntosDer.get(j));
